@@ -7,7 +7,7 @@ export default function Navigation() {
     const [open, setOpen] = useState(false);
 
     return (
-        <nav className="relative w-full border-b bg-white">
+        <nav className="relative w-full bg-white">
             <div className="mx-auto max-w-7xl px-4">
                 <div className="flex h-16 items-center justify-between">
 
