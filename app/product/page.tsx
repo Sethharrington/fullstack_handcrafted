@@ -1,4 +1,31 @@
 import Image from "next/image";
+import React from "react";
+import ReviewList from "../components/ReviewList";
+import type { Review } from "../components/ReviewList";
+
+const reviews: Review[] = [
+  {
+    title: "Great Product",
+    reviewer: "Alice Johnson",
+    date: "2026-02-01",
+    rating: 5,
+    text: "I absolutely loved this product. It exceeded my expectations!",
+  },
+  {
+    title: "Not bad",
+    reviewer: "Mark Smith",
+    date: "2026-01-28",
+    rating: 3,
+    text: "The product was okay, but I expected more features.",
+  },
+  {
+    title: "Would not recommend",
+    reviewer: "Sophia Lee",
+    date: "2026-01-15",
+    rating: 1,
+    text: "Unfortunately, the product broke after a week of use.",
+  },
+];
 
 export default function Product() {
   return (
@@ -34,6 +61,10 @@ export default function Product() {
             Toys
           </p>
         </div>
+      </div>
+      <div style={{ padding: "20px" }}>
+        <h1>Customer Reviews</h1>
+        <ReviewList reviews={reviews} />
       </div>
     </div>
   );
