@@ -12,7 +12,7 @@ export default function Navigation() {
                 <div className="flex h-16 items-center justify-between">
 
                     {/* Logo */}
-                    <a href="#" className="flex items-center">
+                    <a href="/" className="flex items-center">
                         <Image 
                           src="/images/logo.svg"
                           alt="logo"
@@ -24,13 +24,13 @@ export default function Navigation() {
                     {/* Desktop Links */}
                     <ul className="hidden md:flex items-center gap-6">
                         <li>
-                            <a className="text-gray-700 hover:text-amber-600" href="#">Link 1</a>
+                            <a className="text-gray-700 hover:text-amber-600" href="/">Home</a>
                         </li>
                         <li>
-                            <a className="text-gray-700 hover:text-amber-600" href="#">Link 2</a>
+                            <a className="text-gray-700 hover:text-amber-600" href="/dashboard">Dashboard</a>
                         </li>
                         <li>
-                            <a className="text-gray-700 hover:text-amber-600" href="#">Link 3</a>
+                            <a className="text-gray-700 hover:text-amber-600" href="/register">Register</a>
                         </li>
                     </ul>
 
@@ -47,13 +47,13 @@ export default function Navigation() {
                     {open && (
                         <ul className="md:hidden absolute top-16 left-0 w-full bg-white border-t flex flex-col gap-4 p-4 shadow-md transition delay-150 duration-300 ease-in-out">
                             <li>
-                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="#">Link 1</a>
+                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="/">Home</a>
                             </li>
                             <li>
-                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="#">Link 2</a>
+                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="/dashboard">Dashboard</a>
                             </li>
                             <li>
-                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="#">Link 3</a>
+                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="/register">Register</a>
                             </li>
                         </ul>
                     )}
