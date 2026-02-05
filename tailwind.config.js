@@ -6,7 +6,17 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        slideIn: {
+          '0%': { transform: 'translateX(20px)', opacity: 0 },
+          '100%': { transform: 'translateX(0)', opacity: 1 },
+        },
+      },
+      animation: {
+        slideIn: 'slideIn 0.4s ease-out',
+      },
+    },
   },
   plugins: [],
 }
