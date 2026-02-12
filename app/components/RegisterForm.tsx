@@ -10,6 +10,7 @@ export default function RegisterForm() {
     name: "",
     email: "",
     password: "",
+    description: "",
   });
 
   const [error, setError] = useState("");
@@ -103,6 +104,21 @@ export default function RegisterForm() {
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
+        
+        {/* Description */}
+        <div>
+        <label className="block text-sm font-medium text-gray-700">
+          About you / Your craft
+        </label>
+        <textarea
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+          rows={3}
+          className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-emerald-600"
+          placeholder="Tell customers about your craft..."
+        />
+      </div>
 
         {/* Error */}
         {error && (

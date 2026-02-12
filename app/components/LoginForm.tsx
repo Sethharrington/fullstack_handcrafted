@@ -33,7 +33,7 @@ export default function LoginForm() {
       // set simple auth cookie
       document.cookie = "auth=true; path=/";
 
-      router.push("/dashboard");
+      router.push("/profile");
     } catch (err: any) {
       setError(err.message);
     } finally {

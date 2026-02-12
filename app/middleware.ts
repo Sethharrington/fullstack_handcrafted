@@ -2,9 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  const isLoggedIn = req.cookies.get("auth");
+  const token = req.cookies.get("token");
 
-  if (!isLoggedIn && req.nextUrl.pathname.startsWith("/dashboard")) {
+  if (!token && req.nextUrl.pathname.startsWith("/profile")) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 }
+
+export const config = {
+  matcher: ["/profile/:path*"],
+};

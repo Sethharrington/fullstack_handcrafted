@@ -4,16 +4,45 @@ import User from "../../../models/User";
 import { connectDB } from "../../../lib/db";
 
 export async function POST(req: Request) {
-  await connectDB();
-  const { name, email, password } = await req.json();
+  try {
+    await connectDB();
+    const { name, email, password, description } = await req.json();
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+    const existingUser = await User.findOne({
+      $or: [{ email }],
+    });
 
-  await User.create({
-    name,
-    email,
-    password: hashedPassword,
-  });
+    if (existingUser) {
+      return NextResponse.json(
+        { error: "Email already exists" },
+        { status: 400 }
+      );
+    }
 
-  return NextResponse.json({ message: "User registered" });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      description,
+    });
+
+    return NextResponse.json(
+      { message: "User registered successfully" },
+      { status: 201 }
+    );
+  } catch (error: any) {
+    if (error.code === 11000) {
+      return NextResponse.json(
+        { error: "Email already exists" },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
+  }
 }

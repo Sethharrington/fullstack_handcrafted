@@ -27,10 +27,13 @@ export default function Navigation() {
                             <a className="text-gray-700 hover:text-amber-600" href="/">Home</a>
                         </li>
                         <li>
-                            <a className="text-gray-700 hover:text-amber-600" href="/dashboard">Dashboard</a>
+                            <a className="text-gray-700 hover:text-amber-600" href="/card">Products</a>
                         </li>
                         <li>
                             <a className="text-gray-700 hover:text-amber-600" href="/register">Register</a>
+                        </li>
+                        <li>
+                            <a className="text-gray-700 hover:text-amber-600" href="/profile">Profile</a>
                         </li>
                     </ul>
 
@@ -50,10 +53,13 @@ export default function Navigation() {
                             <a className="block text-gray-700 hover:text-amber-600 text-center" href="/">Home</a>
                             </li>
                             <li>
-                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="/dashboard">Dashboard</a>
+                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="/card">Products</a>
                             </li>
                             <li>
                             <a className="block text-gray-700 hover:text-amber-600 text-center" href="/register">Register</a>
+                            </li>
+                            <li>
+                            <a className="block text-gray-700 hover:text-amber-600 text-center" href="/profile">Profile</a>
                             </li>
                         </ul>
                     )}
