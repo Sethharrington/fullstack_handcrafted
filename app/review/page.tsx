@@ -43,10 +43,12 @@ export default function NewReviewPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">Insert Review</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+        <h1 className="text-2xl font-bold text-gray-800 text-center">
+          Insert Review
+        </h1>
+        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           {/* Title */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -57,7 +59,7 @@ export default function NewReviewPage() {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               required
             />
           </div>
@@ -72,7 +74,7 @@ export default function NewReviewPage() {
               name="reviewer"
               value={formData.reviewer}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               required
             />
           </div>
@@ -87,7 +89,7 @@ export default function NewReviewPage() {
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               required
             />
           </div>
@@ -101,7 +103,7 @@ export default function NewReviewPage() {
               name="rating"
               value={formData.rating}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               required
             >
               {[1, 2, 3, 4, 5].map((r) => (
@@ -122,7 +124,7 @@ export default function NewReviewPage() {
               value={formData.text}
               onChange={handleChange}
               rows={4}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               required
             />
           </div>
@@ -130,7 +132,7 @@ export default function NewReviewPage() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition"
+            className="w-full bg-emerald-700 text-white py-2 rounded-md font-medium hover:bg-emerald-800 transition disabled:opacity-50"
           >
             Submit Review
           </button>

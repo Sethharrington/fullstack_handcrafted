@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import ReviewList from "../components/ReviewList";
 import type { Review } from "../components/ReviewList";
@@ -65,6 +66,12 @@ export default function Product() {
       <div style={{ padding: "20px" }}>
         <h1>Customer Reviews</h1>
         <ReviewList reviews={reviews} />
+        <Link
+          href="/review"
+          className="text-blue-500 hover:underline mt-4 inline-block"
+        >
+          Rate and review...
+        </Link>
       </div>
     </div>
   );
