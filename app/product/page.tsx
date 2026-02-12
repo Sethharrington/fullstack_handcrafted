@@ -66,7 +66,10 @@ export default function Product() {
       <div style={{ padding: "20px" }}>
         <h1>Customer Reviews</h1>
         <ReviewList reviews={reviews} />
-        <Link href="/review" className="text-blue-500 hover:underline mt-4 inline-block">
+        <Link
+          href="/review"
+          className="text-blue-500 hover:underline mt-4 inline-block"
+        >
           Rate and review...
         </Link>
       </div>
