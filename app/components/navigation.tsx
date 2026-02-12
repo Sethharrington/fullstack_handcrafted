@@ -12,7 +12,7 @@ export default function Navigation() {
                 <div className="flex h-16 items-center justify-between">
 
                     {/* Logo */}
-                    <a href="/" className="flex items-center">
+                    <a href="/" className="flex items-center w-auto h-auto">
                         <Image 
                           src="/images/logo.svg"
                           alt="logo"

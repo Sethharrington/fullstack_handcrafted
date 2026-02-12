@@ -1,7 +1,7 @@
 "use client";
 
 // Define the button type so it can be used with typescript
-type SlideShowButtonProps = {
+interface SlideShowButtonProps {
     children: React.ReactNode;
     onClick: () => void;
 };
