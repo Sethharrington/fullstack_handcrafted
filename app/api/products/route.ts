@@ -13,13 +13,14 @@ export async function GET(req: Request) {
   return NextResponse.json(products);
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   await connectDB();
   const user = await getUserFromToken(req);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+  const { id } = await params;
   const { title, description, price } = await req.json();
-  const product = await Product.findById(params.id);
+  const product = await Product.findById(id);
 
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
   if (!product.artisan.equals(user._id))
@@ -33,17 +34,18 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   return NextResponse.json({ message: "Product updated", product });
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   await connectDB();
   const user = await getUserFromToken(req);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const product = await Product.findById(params.id);
+  const { id } = await params;
+  const product = await Product.findById(id);
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
   if (!product.artisan.equals(user._id))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  await Product.findByIdAndDelete(params.id);
+  await Product.findByIdAndDelete(id);
   return NextResponse.json({ message: "Product deleted" });
 }
 
