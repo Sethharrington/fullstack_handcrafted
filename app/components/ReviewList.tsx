@@ -5,6 +5,7 @@ import React, { JSX } from "react";
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
 export type Review = {
+  product: string;
   title: string;
   reviewer: string;
   date: string;
@@ -31,7 +32,7 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
       {reviews.map((review, index) => (
         <div key={index} className="border-b border-gray-300 py-3">
           <div className="font-bold mb-1">
-            {review.title} — {review.reviewer} ({review.date}){" "}
+            {review.title} — {review.reviewer} ({new Date(review.date).toISOString().split("T")[0]})
             {renderStars(review.rating)}
           </div>
           <div className="text-gray-500">{review.text}</div>

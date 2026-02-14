@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function MyProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
@@ -45,30 +46,38 @@ export default function MyProductsPage() {
     }
   };
 
+  console.log("product", products[1])
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">My Products</h1>
 
       {products.map((product) => (
-        <div key={product._id} className="border p-4 mb-4 rounded">
-          <h2 className="text-xl font-bold">{product.title}</h2>
-          <p>{product.description}</p>
-          <p className="font-semibold">${product.price}</p>
-          <div className="mt-2 space-x-2">
+          <div key={product._id} onClick={() => router.push(`/products/${product._id.toString()}`)} className="border p-4 mb-4 rounded cursor-pointer hover:shadow">
+            <h2 className="text-xl font-bold">{product.title}</h2>
+            <p>{product.description}</p>
+            <p className="font-semibold">${product.price}</p>
+            <div className="mt-2 space-x-2">
             <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setEditingProduct(product);
+              }}
               className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
-              onClick={() => setEditingProduct(product)}
             >
               Edit
             </button>
             <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(product._id);
+              }}
               className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-              onClick={() => handleDelete(product._id)}
             >
               Delete
             </button>
+            </div>
           </div>
-        </div>
       ))}
 
       {editingProduct && (
