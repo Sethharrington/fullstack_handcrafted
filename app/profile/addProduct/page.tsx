@@ -46,7 +46,7 @@ export default function AddProductPage() {
 
     if (res.ok) {
       alert("Product added!");
-      router.push("/profile/products");
+      router.push("/profile/manageProducts");
     } else {
       const data = await res.json();
       alert(data.error || "Failed to add product");
