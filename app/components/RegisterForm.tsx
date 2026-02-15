@@ -1,51 +1,5 @@
-// import { useState } from "react";
-// import { useRouter } from "next/navigation";
 import { createUser } from "../lib/actions";
 export default function RegisterForm() {
-  // const router = useRouter();
-
-  // const [form, setForm] = useState({
-  //   firstname: "",
-  //   lastname: "",
-  //   email: "",
-  //   username: "",
-  //   password: "",
-  //   artisan_id: "",
-  // });
-
-  // const [error, setError] = useState("");
-  // const [loading, setLoading] = useState(false);
-
-  // function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-  //   setForm({ ...form, [e.target.name]: e.target.value });
-  // }
-
-  // async function handleSubmit(e: React.FormEvent) {
-  //   e.preventDefault();
-  //   setError("");
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await fetch("/api/auth/register", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(form),
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (!res.ok) {
-  //       throw new Error(data.error || "Registration failed");
-  //     }
-
-  //     // router.push("/login");
-  //   } catch (err: any) {
-  //     setError(err.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
   return (
     <section className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
       <h1 className="text-2xl font-bold text-gray-800 text-center">
@@ -56,7 +10,6 @@ export default function RegisterForm() {
         Create an account to start selling your handcrafted items
       </p>
 
-      {/* <form onSubmit={handleSubmit} className="mt-6 space-y-4"> */}
       <form action={createUser} className="mt-6 space-y-4">
         {/* Name */}
         <div>
@@ -70,8 +23,6 @@ export default function RegisterForm() {
             id="firstname"
             name="firstname"
             required
-            // value={form.firstname}
-            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
@@ -87,8 +38,6 @@ export default function RegisterForm() {
             id="lastname"
             name="lastname"
             required
-            // value={form.lastname}
-            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
@@ -104,8 +53,6 @@ export default function RegisterForm() {
             id="username"
             name="username"
             required
-            // value={form.username}
-            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
@@ -123,8 +70,6 @@ export default function RegisterForm() {
             name="email"
             type="email"
             required
-            // value={form.email}
-            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
@@ -143,8 +88,6 @@ export default function RegisterForm() {
             type="password"
             minLength={6}
             required
-            // value={form.password}
-            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
@@ -175,8 +118,6 @@ export default function RegisterForm() {
             id="artisan_id"
             name="artisan_id"
             required
-            // value={form.artisan_id}
-            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>

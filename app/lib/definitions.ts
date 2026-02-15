@@ -1,35 +1,45 @@
 export type Artisan = {
-  id: number;
+  id?: string;
   name: string;
   description: string;
 };
 
 export type Category = {
-  id: number;
+  id?: string;
   name: string;
   description: string;
   note: string;
 };
 
 export type Product = {
-  id: number;
+  id?: string;
   name: string;
   price: number;
+  description?: string;
   artisan_id: string;
   category_id: string;
 };
 
+export type ProductCard = Product & {
+  artisan_id: string;
+  category_id: string;
+  artisan_name: string;
+  category_name: string;
+};
+
 export type Review = {
+  id?: string;
   email: string;
   rating: number;
   description: string;
-  product_id: number;
+  product_id: string;
 };
 export type User = {
+  id?: string;
   firstname: string;
   lastname: string;
   email: string;
   username: string;
   password: string;
-  artisan_id: number;
+  artisan_id?: string;
 };
