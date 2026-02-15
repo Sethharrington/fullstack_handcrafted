@@ -96,59 +96,259 @@ VALUES (
 -- ============================================
 INSERT INTO product (name, price, artisan_id, category_id)
 VALUES -- Pottery products
-    ('Handthrown Coffee Mug', 28.99, 1, 1),
-    ('Large Serving Bowl', 65.50, 1, 1),
-    ('Decorative Vase', 42.00, 14, 1),
-    ('Ceramic Planter Set', 55.00, 14, 1),
+    (
+        'Handthrown Coffee Mug',
+        28.99,
+        '851c2f6b-f322-4e11-a72b-aa94ecb9a17b',
+        '296792cf-29a0-4535-a321-2c137e525d9b'
+    ),
+    (
+        'Large Serving Bowl',
+        65.50,
+        '851c2f6b-f322-4e11-a72b-aa94ecb9a17b',
+        '296792cf-29a0-4535-a321-2c137e525d9b'
+    ),
+    (
+        'Decorative Vase',
+        42.00,
+        'eb14aa324-a933-4824-bed8-dfc480a74436',
+        '296792cf-29a0-4535-a321-2c137e525d9b'
+    ),
+    (
+        'Ceramic Planter Set',
+        55.00,
+        'eb14aa324-a933-4824-bed8-dfc480a74436',
+        '296792cf-29a0-4535-a321-2c137e525d9b'
+    ),
     -- Jewelry products
-    ('Sterling Silver Necklace', 89.99, 2, 2),
-    ('Gemstone Earrings', 45.00, 2, 2),
-    ('Handwoven Bracelet', 32.50, 2, 2),
-    ('Custom Ring', 125.00, 2, 2),
+    (
+        'Sterling Silver Necklace',
+        89.99,
+        '989caae4-2eb-4ef8-9934-2b9d0061298c5',
+        '393e492d-3621-43f3-90bd-b5a473dbb427'
+    ),
+    (
+        'Gemstone Earrings',
+        45.00,
+        '989caae4-2eb-4ef8-9934-2b9d0061298c5',
+        '393e492d-3621-43f3-90bd-b5a473dbb427'
+    ),
+    (
+        'Handwoven Bracelet',
+        32.50,
+        '989caae4-2eb-4ef8-9934-2b9d0061298c5',
+        '393e492d-3621-43f3-90bd-b5a473dbb427'
+    ),
+    (
+        'Custom Ring',
+        125.00,
+        '989caae4-2eb-4ef8-9934-2b9d0061298c5',
+        '393e492d-3621-43f3-90bd-b5a473dbb427'
+    ),
     -- Textile products
-    ('Wool Throw Blanket', 145.00, 3, 3),
-    ('Hand-dyed Scarf', 38.00, 17, 3),
-    ('Woven Wall Hanging', 95.00, 3, 3),
-    ('Cotton Tote Bag', 28.00, 14, 3),
+    (
+        'Wool Throw Blanket',
+        145.00,
+        'e89aad6d-0d47-42b3-8d53-be14c4fff31a',
+        '7ce3aaa4-b64e-42e5-9624-380fc8903a6c'
+    ),
+    (
+        'Hand-dyed Scarf',
+        38.00,
+        'fea9f9ac-f1a2-40fe-a1a9-b5cff1d82008',
+        '7ce3aaa4-b64e-42e5-9624-380fc8903a6c'
+    ),
+    (
+        'Woven Wall Hanging',
+        95.00,
+        'e89aad6d-0d47-42b3-8d53-be14c4fff31a',
+        '7ce3aaa4-b64e-42e5-9624-380fc8903a6c'
+    ),
+    (
+        'Cotton Tote Bag',
+        28.00,
+        'eb14aa324-a933-4824-bed8-dfc480a74436',
+        '7ce3aaa4-b64e-42e5-9624-380fc8903a6c'
+    ),
     -- Woodwork products
-    ('Oak Cutting Board', 68.00, 5, 4),
-    ('Walnut Coffee Table', 450.00, 5, 4),
-    ('Turned Wooden Bowl', 85.00, 15, 4),
-    ('Hand-carved Spoon Set', 45.00, 15, 4),
+    (
+        'Oak Cutting Board',
+        68.00,
+        '783d4391-b4ac-44e4-8154-78ca060c5f2e',
+        'b608dde7-4d64-4429-9361-8d6bf3e75ee2'
+    ),
+    (
+        'Walnut Coffee Table',
+        450.00,
+        '783d4391-b4ac-44e4-8154-78ca060c5f2e',
+        'b608dde7-4d64-4429-9361-8d6bf3e75ee2'
+    ),
+    (
+        'Turned Wooden Bowl',
+        85.00,
+        '0400b18d-dd72-41a7-9b47-aa240449ab61',
+        'b608dde7-4d64-4429-9361-8d6bf3e75ee2'
+    ),
+    (
+        'Hand-carved Spoon Set',
+        45.00,
+        '0400b18d-dd72-41a7-9b47-aa240449ab61',
+        'b608dde7-4d64-4429-9361-8d6bf3e75ee2'
+    ),
     -- Glasswork products
-    ('Blown Glass Vase', 120.00, 9, 5),
-    ('Stained Glass Panel', 280.00, 15, 5),
-    ('Glass Ornament Set', 65.00, 9, 5),
-    ('Fused Glass Plate', 55.00, 9, 5),
+    (
+        'Blown Glass Vase',
+        120.00,
+        'd6ef0a2d-d28e-41fe-ac3e-b8f46b6e82a0',
+        '42e18343-fbad-40f9-bca1-dcf98f1e7698'
+    ),
+    (
+        'Stained Glass Panel',
+        280.00,
+        '0400b18d-dd72-41a7-9b47-aa240449ab61',
+        '42e18343-fbad-40f9-bca1-dcf98f1e7698'
+    ),
+    (
+        'Glass Ornament Set',
+        65.00,
+        'd6ef0a2d-d28e-41fe-ac3e-b8f46b6e82a0',
+        '42e18343-fbad-40f9-bca1-dcf98f1e7698'
+    ),
+    (
+        'Fused Glass Plate',
+        55.00,
+        'd6ef0a2d-d28e-41fe-ac3e-b8f46b6e82a0',
+        '42e18343-fbad-40f9-bca1-dcf98f1e7698'
+    ),
     -- Metalwork products
-    ('Forged Iron Hooks', 42.00, 10, 6),
-    ('Copper Wind Chimes', 78.00, 16, 6),
-    ('Bronze Sculpture', 350.00, 10, 6),
-    ('Steel Garden Stakes', 35.00, 16, 6),
+    (
+        'Forged Iron Hooks',
+        42.00,
+        '83e97fe2-dbe2-af7e-13fc-91be34f6b727',
+        '340ee35c-8fd5-47ba-b343-c563ed2306a6'
+    ),
+    (
+        'Copper Wind Chimes',
+        78.00,
+        '7e202ea1-5904-4d0e-bcc8-9ad47662da3',
+        '340ee35c-8fd5-47ba-b343-c563ed2306a6'
+    ),
+    (
+        'Bronze Sculpture',
+        350.00,
+        '83e97fe2-dbe2-af7e-13fc-91be34f6b727',
+        '340ee35c-8fd5-47ba-b343-c563ed2306a6'
+    ),
+    (
+        'Steel Garden Stakes',
+        35.00,
+        '7e202ea1-5904-4d0e-bcc8-9ad47662da3',
+        '340ee35c-8fd5-47ba-b343-c563ed2306a6'
+    ),
     -- Leather products
-    ('Leather Messenger Bag', 185.00, 11, 7),
-    ('Handtooled Belt', 68.00, 11, 7),
-    ('Leather Wallet', 52.00, 11, 7),
-    ('Leather Journal Cover', 75.00, 11, 7),
+    (
+        'Leather Messenger Bag',
+        185.00,
+        '52ac6371-5974-408c-85df-1c1940db1f73',
+        'bd45f0c5-0c34-407c-8f70-a87ebd0d1138'
+    ),
+    (
+        'Handtooled Belt',
+        68.00,
+        '52ac6371-5974-408c-85df-1c1940db1f73',
+        'bd45f0c5-0c34-407c-8f70-a87ebd0d1138'
+    ),
+    (
+        'Leather Wallet',
+        52.00,
+        '52ac6371-5974-408c-85df-1c1940db1f73',
+        'bd45f0c5-0c34-407c-8f70-a87ebd0d1138'
+    ),
+    (
+        'Leather Journal Cover',
+        75.00,
+        '52ac6371-5974-408c-85df-1c1940db1f73',
+        'bd45f0c5-0c34-407c-8f70-a87ebd0d1138'
+    ),
     -- Paintings
-    ('Abstract Landscape', 425.00, 12, 8),
-    ('Portrait Commission', 650.00, 18, 8),
-    ('Watercolor Series', 280.00, 12, 8),
-    ('Mixed Media Canvas', 320.00, 16, 8),
+    (
+        'Abstract Landscape',
+        425.00,
+        'fdf82fe8-42de-4d68-abec-7ca35641fcd8',
+        '6ff82e8e-2a82-4274-bbe8-c878e4693b5c'
+    ),
+    (
+        'Portrait Commission',
+        650.00,
+        '8b8ec14f-6d86-4c28-91b8-a1de68d8da23',
+        '6ff82e8e-2a82-4274-bbe8-c878e4693b5c'
+    ),
+    (
+        'Watercolor Series',
+        280.00,
+        'fdf82fe8-42de-4d68-abec-7ca35641fcd8',
+        '6ff82e8e-2a82-4274-bbe8-c878e4693b5c'
+    ),
+    (
+        'Mixed Media Canvas',
+        320.00,
+        '7e202ea1-5904-4d0e-bcc8-9ad47662da3',
+        '6ff82e8e-2a82-4274-bbe8-c878e4693b5c'
+    ),
     -- Sculptures
-    ('Stone Garden Sculpture', 580.00, 13, 9),
-    ('Clay Figure', 165.00, 14, 9),
-    ('Metal Abstract Piece', 445.00, 10, 9),
-    ('Wooden Carved Figure', 225.00, 15, 9),
+    (
+        'Stone Garden Sculpture',
+        580.00,
+        'ed6d2d8e-e7c1-4807-aa11-f6d4a631ef206',
+        '9e9bfda2-9798-4367-961f-1441571c2a2c'
+    ),
+    (
+        'Clay Figure',
+        165.00,
+        'eb14aa324-a933-4824-bed8-dfc480a74436',
+        '9e9bfda2-9798-4367-961f-1441571c2a2c'
+    ),
+    (
+        'Metal Abstract Piece',
+        445.00,
+        '83e97fe2-dbe2-af7e-13fc-91be34f6b727',
+        '9e9bfda2-9798-4367-961f-1441571c2a2c'
+    ),
+    (
+        'Wooden Carved Figure',
+        225.00,
+        '0400b18d-dd72-41a7-9b47-aa240449ab61',
+        '9e9bfda2-9798-4367-961f-1441571c2a2c'
+    ),
     -- Paper Crafts
-    ('Handmade Journal', 35.00, 19, 10),
-    ('Letterpress Cards Set', 28.00, 19, 10),
-    ('Origami Art Piece', 55.00, 19, 10),
-    ('Custom Invitation Suite', 125.00, 19, 10);
+    (
+        'Handmade Journal',
+        35.00,
+        'e4991cb7-5f28-45c3-b211-db2eb7f46d6b',
+        'd562e785-1bb0-4229-abd0-0a172a0b1803'
+    ),
+    (
+        'Letterpress Cards Set',
+        28.00,
+        'e4991cb7-5f28-45c3-b211-db2eb7f46d6b',
+        'd562e785-1bb0-4229-abd0-0a172a0b1803'
+    ),
+    (
+        'Origami Art Piece',
+        55.00,
+        'e4991cb7-5f28-45c3-b211-db2eb7f46d6b',
+        'd562e785-1bb0-4229-abd0-0a172a0b1803'
+    ),
+    (
+        'Custom Invitation Suite',
+        125.00,
+        'e4991cb7-5f28-45c3-b211-db2eb7f46d6b',
+        'd562e785-1bb0-4229-abd0-0a172a0b1803'
+    );
 -- ============================================
 -- TABLE: users
 -- ============================================
-INSERT INTO "user" (
+INSERT INTO 'user' (
         firstname,
         lastname,
         email,
@@ -162,7 +362,7 @@ VALUES (
         'emma.johnson@email.com',
         'emmaj',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        1
+        '851c2f6b-f322-4e11-a72b-aa94ecb9a17b'
     ),
     (
         'Michael',
@@ -170,7 +370,7 @@ VALUES (
         'michael.smith@email.com',
         'msmith',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        2
+        '989caae4-2eb-4ef8-9934-2b9d0061298c5'
     ),
     (
         'Sarah',
@@ -178,7 +378,7 @@ VALUES (
         'sarah.williams@email.com',
         'swilliams',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        3
+        'e89aad6d-0d47-42b3-8d53-be14c4fff31a'
     ),
     (
         'David',
@@ -186,7 +386,7 @@ VALUES (
         'david.brown@email.com',
         'dbrown',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        4
+        'a1ccb504-e147-42b3-8b83-be14c4fff31a'
     ),
     (
         'Lisa',
@@ -194,7 +394,7 @@ VALUES (
         'lisa.davis@email.com',
         'ldavis',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        5
+        '783d4391-b4ac-44e4-8154-78ca060c5f2e'
     ),
     (
         'James',
@@ -202,7 +402,7 @@ VALUES (
         'james.miller@email.com',
         'jmiller',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        6
+        '19cc9a37-011a-468e-ab2f-a380ae089971'
     ),
     (
         'Maria',
@@ -210,7 +410,7 @@ VALUES (
         'maria.garcia@email.com',
         'mgarcia',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        7
+        '5f9a186c-b2c8-44e4-9934-47f5ac7b938c'
     ),
     (
         'Robert',
@@ -218,7 +418,7 @@ VALUES (
         'robert.r@email.com',
         'rrodriguez',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        8
+        'e721397c-0d17-4099-a824-52f3ab6e4219'
     ),
     (
         'Jennifer',
@@ -226,7 +426,7 @@ VALUES (
         'jennifer.m@email.com',
         'jmartinez',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        9
+        'd6ef0a2d-d28e-41fe-ac3e-b8f46b6e82a0'
     ),
     (
         'William',
@@ -234,7 +434,7 @@ VALUES (
         'william.a@email.com',
         'wanderson',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        10
+        '83e97fe2-dbe2-af7e-13fc-91be34f6b727'
     ),
     (
         'Elizabeth',
@@ -242,7 +442,7 @@ VALUES (
         'elizabeth.t@email.com',
         'etaylor',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        11
+        '52ac6371-5974-408c-85df-1c1940db1f73'
     ),
     (
         'Daniel',
@@ -250,7 +450,7 @@ VALUES (
         'daniel.thomas@email.com',
         'dthomas',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        12
+        'fdf82fe8-42de-4d68-abec-7ca35641fcd8'
     ),
     (
         'Jessica',
@@ -258,7 +458,7 @@ VALUES (
         'jessica.moore@email.com',
         'jmoore',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        13
+        'ed6d2d8e-e7c1-4807-aa11-f6d4a631ef206'
     ),
     (
         'Christopher',
@@ -266,7 +466,7 @@ VALUES (
         'chris.jackson@email.com',
         'cjackson',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        14
+        'eb14aa324-a933-4824-bed8-dfc480a74436'
     ),
     (
         'Ashley',
@@ -274,7 +474,7 @@ VALUES (
         'ashley.white@email.com',
         'awhite',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        15
+        '0400b18d-dd72-41a7-9b47-aa240449ab61'
     ),
     (
         'Matthew',
@@ -282,7 +482,7 @@ VALUES (
         'matthew.harris@email.com',
         'mharris',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        16
+        '7e202ea1-5904-4d0e-bcc8-9ad47662da3'
     ),
     (
         'Amanda',
@@ -290,7 +490,7 @@ VALUES (
         'amanda.martin@email.com',
         'amartin',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        17
+        'fea9f9ac-f1a2-40fe-a1a9-b5cff1d82008'
     ),
     (
         'Joshua',
@@ -298,7 +498,7 @@ VALUES (
         'joshua.t@email.com',
         'jthompson',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        18
+        '8b8ec14f-6d86-4c28-91b8-a1de68d8da23'
     ),
     (
         'Melissa',
@@ -306,7 +506,7 @@ VALUES (
         'melissa.lee@email.com',
         'mlee',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        19
+        'e4991cb7-5f28-45c3-b211-db2eb7f46d6b'
     ),
     (
         'Andrew',
@@ -314,7 +514,7 @@ VALUES (
         'andrew.walker@email.com',
         'awalker',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        1
+        '851c2f6b-f322-4e11-a72b-aa94ecb9a17b'
     ),
     (
         'Olivia',
@@ -322,7 +522,7 @@ VALUES (
         'olivia.hall@email.com',
         'ohall',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        2
+        '989caae4-2eb-4ef8-9934-2b9d0061298c5'
     ),
     (
         'Ryan',
@@ -330,7 +530,7 @@ VALUES (
         'ryan.allen@email.com',
         'rallen',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        3
+        'e89aad6d-0d47-42b3-8d53-be14c4fff31a'
     ),
     (
         'Sophia',
@@ -338,7 +538,7 @@ VALUES (
         'sophia.young@email.com',
         'syoung',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        4
+        'a1ccb504-e147-42b3-8b83-be14c4fff31a'
     ),
     (
         'Brandon',
@@ -346,7 +546,7 @@ VALUES (
         'brandon.king@email.com',
         'bking',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        5
+        '783d4391-b4ac-44e4-8154-78ca060c5f2e'
     ),
     (
         'Hannah',
@@ -354,7 +554,7 @@ VALUES (
         'hannah.wright@email.com',
         'hwright',
         '$2b$10$N9qo8uLOickga.s3vYKHBOPTl49sL4JxKWBhU0T6cJzBH8Y2B9j2K',
-        6
+        '19cc9a37-011a-468e-ab2f-a380ae089971'
     );
 -- ============================================
 -- TABLE: reviews

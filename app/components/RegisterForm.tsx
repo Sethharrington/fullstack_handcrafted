@@ -1,50 +1,50 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
+// import { useState } from "react";
+// import { useRouter } from "next/navigation";
+import { createUser } from "../lib/actions";
 export default function RegisterForm() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    description: "",
-  });
+  // const [form, setForm] = useState({
+  //   firstname: "",
+  //   lastname: "",
+  //   email: "",
+  //   username: "",
+  //   password: "",
+  //   artisan_id: "",
+  // });
 
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  // function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  // async function handleSubmit(e: React.FormEvent) {
+  //   e.preventDefault();
+  //   setError("");
+  //   setLoading(true);
 
-    try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+  //   try {
+  //     const res = await fetch("/api/auth/register", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(form),
+  //     });
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || "Registration failed");
-      }
+  //     if (!res.ok) {
+  //       throw new Error(data.error || "Registration failed");
+  //     }
 
-      router.push("/login");
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  //     // router.push("/login");
+  //   } catch (err: any) {
+  //     setError(err.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   return (
     <section className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
@@ -56,25 +56,66 @@ export default function RegisterForm() {
         Create an account to start selling your handcrafted items
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+      {/* <form onSubmit={handleSubmit} className="mt-6 space-y-4"> */}
+      <form action={createUser} className="mt-6 space-y-4">
         {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Full Name
+          <label
+            htmlFor="firstname"
+            className="block text-sm font-medium text-gray-700"
+          >
+            First Name
           </label>
           <input
-            id="name"
-            name="name"
+            id="firstname"
+            name="firstname"
             required
-            value={form.name}
-            onChange={handleChange}
+            // value={form.firstname}
+            // onChange={handleChange}
+            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+        </div>
+        {/* Name */}
+        <div>
+          <label
+            htmlFor="lastname"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Last Name
+          </label>
+          <input
+            id="lastname"
+            name="lastname"
+            required
+            // value={form.lastname}
+            // onChange={handleChange}
+            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+        </div>
+        {/* Name */}
+        <div>
+          <label
+            htmlFor="username"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Username
+          </label>
+          <input
+            id="username"
+            name="username"
+            required
+            // value={form.username}
+            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
             Email
           </label>
           <input
@@ -82,15 +123,18 @@ export default function RegisterForm() {
             name="email"
             type="email"
             required
-            value={form.email}
-            onChange={handleChange}
+            // value={form.email}
+            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
 
         {/* Password */}
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700"
+          >
             Password
           </label>
           <input
@@ -99,39 +143,54 @@ export default function RegisterForm() {
             type="password"
             minLength={6}
             required
-            value={form.password}
-            onChange={handleChange}
+            // value={form.password}
+            // onChange={handleChange}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
-        
+
         {/* Description */}
+        {/* <div>
+          <label className="block text-sm font-medium text-gray-700">
+            About you / Your craft
+          </label>
+          <textarea
+            name="artisan_id"
+            value={form.artisan_id}
+            onChange={handleChange}
+            rows={3}
+            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-emerald-600"
+            placeholder="Tell customers about your craft..."
+          />
+        </div> */}
+        {/* Name */}
         <div>
-        <label className="block text-sm font-medium text-gray-700">
-          About you / Your craft
-        </label>
-        <textarea
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-          rows={3}
-          className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-emerald-600"
-          placeholder="Tell customers about your craft..."
-        />
-      </div>
+          <label
+            htmlFor="artisan_id"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Artisan ID
+          </label>
+          <input
+            id="artisan_id"
+            name="artisan_id"
+            required
+            // value={form.artisan_id}
+            // onChange={handleChange}
+            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+        </div>
 
         {/* Error */}
-        {error && (
-          <p className="text-sm text-red-600">{error}</p>
-        )}
+        {/* {error && <p className="text-sm text-red-600">{error}</p>} */}
 
         {/* Button */}
         <button
           type="submit"
-          disabled={loading}
+          // disabled={loading}
           className="w-full bg-emerald-700 text-white py-2 rounded-md font-medium hover:bg-emerald-800 transition disabled:opacity-50"
         >
-          {loading ? "Creating account..." : "Register"}
+          {/* {loading ? "Creating account..." : "Register"} */}
         </button>
       </form>
 
