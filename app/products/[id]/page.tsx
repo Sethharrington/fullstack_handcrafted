@@ -57,7 +57,9 @@ export default function Product() {
 
   return (
     <div className="flex flex-col items-center justify-center py-10">
-      <h1 className="text-xl font-bold">Details Page</h1>
+      <h1 className="text-2xl font-bold text-gray-800 text-center">
+        Details Page
+      </h1>
       <div className="grid grid-cols-2 mt-6 ">
         <div>
           <Image
@@ -90,7 +92,9 @@ export default function Product() {
         </div>
       </div>
       <div style={{ padding: "20px" }}>
-        <h1>Customer Reviews</h1>
+        <h1 className="text-2xl font-bold text-gray-800 text-center">
+          Customer Reviews
+        </h1>
         {!reviews || reviews.length === 0 ? (
           <p>No reviews</p>
         ) : (
