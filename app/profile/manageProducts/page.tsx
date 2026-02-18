@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function MyProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
@@ -30,7 +29,7 @@ export default function MyProductsPage() {
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
     const res = await fetch(`/api/products/${id}`, { method: "DELETE" });
-    if (res.ok) setProducts(products.filter((p) => p._id !== id));
+    if (res.ok) setProducts(products.filter((p) => p.id !== id));
   };
 
   const handleUpdate = async () => {
@@ -41,7 +40,7 @@ export default function MyProductsPage() {
       body: JSON.stringify({ title, description, price }),
     });
     if (res.ok) {
-      setProducts(products.map((p) => (p._id === _id ? editingProduct : p)));
+      setProducts(products.map((p) => (p.id === editingProduct.id ? editingProduct : p)));
       setEditingProduct(null);
     }
   };

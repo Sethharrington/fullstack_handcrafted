@@ -9,7 +9,7 @@ import {
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
+import bcrypt from "bcrypt";
 import postgres from "postgres";
 
 const sql = postgres(process.env.POSTGRES_URL!, {
@@ -92,9 +92,11 @@ export async function createUser(formData: FormData) {
       artisan_id: formData.get("artisan_id"),
     });
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
   await sql`
     INSERT INTO "user" (firstname, lastname, email, username, password, artisan_id)
-    VALUES (${firstname}, ${lastname}, ${email}, ${username}, ${password}, ${artisan_id ?? null})
+    VALUES (${firstname}, ${lastname}, ${email}, ${username}, ${hashedPassword}, ${artisan_id ?? null})
   `;
   revalidatePath("/login");
   redirect("/login");

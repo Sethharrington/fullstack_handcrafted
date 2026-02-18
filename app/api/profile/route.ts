@@ -1,31 +1,33 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "../../lib/db";
-import User from "../../models/User";
+import postgres from "postgres";
 import { getUserFromToken } from "../../lib/auth";
 
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
+
 export async function GET(req: Request) {
-  await connectDB();
   const user = await getUserFromToken(req);
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  // Fetch user info from Postgres
+  const [dbUser] = await sql`
+    SELECT u.id, u.firstname, u.lastname, u.email, u.username, a.id AS artisan_id, a.name AS artisan_name, a.description AS artisan_description
+    FROM "user" u
+    LEFT JOIN artisans a ON u.artisan_id = a.id
+    WHERE u.id = ${user.id}
+  `;
 
-  return NextResponse.json(user);
-}
+  if (!dbUser) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
-export async function PUT(req: Request) {
-  await connectDB();
-  const user = await getUserFromToken(req);
-  const { description } = await req.json();
+  // Transform for frontend
+  const profile = {
+    id: dbUser.id,
+    name: `${dbUser.firstname} ${dbUser.lastname}`,
+    email: dbUser.email,
+    username: dbUser.username,
+    artisan_id: dbUser.artisan_id,
+    artisan_name: dbUser.artisan_name,
+    description: dbUser.artisan_description,
+  };
 
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  await User.findByIdAndUpdate(user._id, {
-    description,
-  });
-
-  return NextResponse.json({ success: true });
+  return NextResponse.json(profile);
 }
