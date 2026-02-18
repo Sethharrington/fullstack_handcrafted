@@ -44,7 +44,7 @@ export async function getProduct() {
 export async function getProductCard() {
   try {
     const productList = await sql<ProductCard[]>`
-    SELECT p.id as id, p.name as name, price, p.description as description, category_id, artisan_id, a.name as artisan_name, c.name as category_name
+    SELECT p.id as id, p.name as name, price, category_id, artisan_id, a.name as artisan_name, c.name as category_name
     FROM "product" as p
     JOIN "artisan" as a ON p.artisan_id = a.id
     JOIN "category" as c ON p.category_id = c.id`;
