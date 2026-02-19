@@ -126,7 +126,7 @@ export async function createReview(prevState: ReviewState, formData: FormData) {
     email: formData.get("email"),
     rating: parseInt(formData.get("rating") as string),
     description: formData.get("description"),
-    product_id: parseInt(formData.get("product_id") as string),
+    product_id: formData.get("product_id"),
   });
   if (!validatedFields.success) {
     return {
@@ -147,8 +147,8 @@ export async function createReview(prevState: ReviewState, formData: FormData) {
       message: "Failed to create review. Please try again.",
     };
   }
-  revalidatePath("/products");
-  redirect("/products");
+  revalidatePath("/products/" + product_id);
+  redirect("/products/" + product_id);
 }
 
 export async function createUser(prevState: UserState, formData: FormData) {
@@ -168,10 +168,10 @@ export async function createUser(prevState: UserState, formData: FormData) {
   }
   const { firstname, lastname, email, username, password, artisan_id } =
     validatedFields.data;
-  
+
   // Hash the password before storing
   const hashedPassword = await bcrypt.hash(password, 10);
-  
+
   try {
     await sql`
     INSERT INTO "user" (firstname, lastname, email, username, password, artisan_id)

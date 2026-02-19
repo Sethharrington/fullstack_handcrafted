@@ -1,17 +1,9 @@
 "use client";
 import React, { JSX } from "react";
-
+import { Review } from "../lib/definitions";
 // Rating can only be 1–5
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
-export type Review = {
-  product: string;
-  title: string;
-  reviewer: string;
-  date: string;
-  rating: Rating;
-  text: string;
-};
 export type ReviewListProps = {
   reviews: Review[];
 };
@@ -31,11 +23,10 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
     <div className="max-w-[600px] mx-auto font-sans">
       {reviews.map((review, index) => (
         <div key={index} className="border-b border-gray-300 py-3">
-          <div className="font-bold mb-1">
-            {review.title} — {review.reviewer} ({new Date(review.date).toISOString().split("T")[0]})
-            {renderStars(review.rating)}
-          </div>
-          <div className="text-gray-500">{review.text}</div>
+          {review.email} |{" "}
+          {new Date(review.created_at).toISOString().split("T")[0]}
+          <div className="font-bold mb-1">{renderStars(review.rating)}</div>
+          <div className="text-gray-500">{review.description}</div>
         </div>
       ))}
     </div>
