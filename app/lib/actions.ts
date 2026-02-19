@@ -1,6 +1,7 @@
 "use server";
 import { signIn } from "@/auth";
 import bcrypt from "bcrypt";
+import { AuthError } from "next-auth";
 
 import {
   ArtisanSchema,
