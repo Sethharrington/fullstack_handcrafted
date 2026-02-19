@@ -1,24 +1,27 @@
 "use client";
 
-import { createProduct } from "@/app/lib/actions";
+import { updateProduct } from "@/app/lib/actions";
 import { Artisan, Category } from "@/app/lib/definitions";
 import { ProductState } from "@/app/lib/states";
 import { useActionState } from "react";
 export default function Form({
+  id,
   artisanList,
   categoryList,
 }: {
+  id: string;
   artisanList: Artisan[];
   categoryList: Category[];
 }) {
   const initialState: ProductState = { message: null, errors: {} };
-  const [state, formAction] = useActionState(createProduct, initialState);
+  const [state, formAction] = useActionState(updateProduct, initialState);
+
   return (
     <form
       action={formAction}
       className="max-w-md mx-auto p-6 border rounded mt-8"
     >
-      <h1 className="text-2xl font-bold mb-4">Add Product</h1>
+      <h1 className="text-2xl font-bold mb-4">Update Product</h1>
 
       <label htmlFor="name" className="block text-sm font-medium mb-1">
         Product Title
