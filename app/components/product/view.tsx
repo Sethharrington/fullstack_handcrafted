@@ -66,7 +66,7 @@ export default function ViewProduct({
         >
           Rate and review...
         </Link> */}
-        <ReviewForm product_id={product.id} />
+        <ReviewForm product_id={product.id || ""} />
       </div>
     </div>
   );
