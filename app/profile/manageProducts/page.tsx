@@ -1,143 +1,61 @@
-"use client";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import { getProductsByArtisanId } from "@/app/lib/data";
+import ManageProductList from "@/app/components/product/manage-list";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+export default async function MyProductsPage() {
+  const session = await auth();
 
-export default function MyProductsPage() {
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [editingProduct, setEditingProduct] = useState<any>(null);
-  const router = useRouter();
+  // Redirect to login if not authenticated
+  if (!session?.user) {
+    redirect("/login");
+  }
 
-  useEffect(() => {
-    fetch("/api/products")
-      .then(async (res) => {
-        if (res.status === 401) {
-          router.push("/login");
-          return [];
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      });
-  }, [router]);
+  // Check if user has an artisan_id
+  const userArtisanId = session.user && 'artisan_id' in session.user 
+    ? (session.user as { artisan_id?: string }).artisan_id 
+    : undefined;
+  
+  if (!userArtisanId) {
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
+          My Products
+        </h1>
+        <div className="text-center py-8 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <p className="text-gray-700 mb-4">
+            You need to be registered as an artisan to manage products.
+          </p>
+          <p className="text-sm text-gray-600">
+            Please contact support to set up your artisan account.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
-  if (loading) return <p>Loading...</p>;
-
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this product?")) return;
-    const res = await fetch(`/api/products/${id}`, { method: "DELETE" });
-    if (res.ok) setProducts(products.filter((p) => p._id !== id));
-  };
-
-  const handleUpdate = async () => {
-    const { _id, title, description, price } = editingProduct;
-    const res = await fetch(`/api/products/${_id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description, price }),
-    });
-    if (res.ok) {
-      setProducts(products.map((p) => (p._id === _id ? editingProduct : p)));
-      setEditingProduct(null);
-    }
-  };
-
-  console.log("product", products[1])
+  // Fetch products for this artisan
+  const products = await getProductsByArtisanId(userArtisanId);
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-gray-800 text-center">
-        My Products
-      </h1>
-
-      {products.map((product) => (
-        <div
-          key={product._id}
-          onClick={() => router.push(`/products/${product._id.toString()}`)}
-          className="border p-4 mb-4 rounded cursor-pointer hover:shadow"
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">My Products</h1>
+        <a
+          href="/profile/addProduct"
+          className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
         >
-          <h2 className="text-xl font-bold">{product.title}</h2>
-          <p>{product.description}</p>
-          <p className="font-semibold">${product.price}</p>
-          <div className="mt-2 space-x-2">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setEditingProduct(product);
-              }}
-              className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
-            >
-              Edit
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDelete(product._id);
-              }}
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
+          Add New Product
+        </a>
+      </div>
 
-      {editingProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded w-96">
-            <h2 className="text-xl font-bold mb-2">Edit Product</h2>
-            <input
-              className="w-full p-2 mb-2 border rounded"
-              value={editingProduct.title}
-              onChange={(e) =>
-                setEditingProduct({ ...editingProduct, title: e.target.value })
-              }
-              placeholder="Title"
-            />
-            <textarea
-              className="w-full p-2 mb-2 border rounded"
-              value={editingProduct.description}
-              onChange={(e) =>
-                setEditingProduct({
-                  ...editingProduct,
-                  description: e.target.value,
-                })
-              }
-              placeholder="Description"
-            />
-            <input
-              className="w-full p-2 mb-2 border rounded"
-              type="number"
-              value={editingProduct.price}
-              onChange={(e) =>
-                setEditingProduct({
-                  ...editingProduct,
-                  price: Number(e.target.value),
-                })
-              }
-              placeholder="Price"
-            />
-            <div className="flex justify-end space-x-2">
-              <button
-                className="bg-gray-400 text-white px-4 py-2 rounded"
-                onClick={() => setEditingProduct(null)}
-              >
-                Cancel
-              </button>
-              <button
-                className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
-                onClick={handleUpdate}
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ManageProductList products={products} />
+
+      <div className="mt-6 text-center">
+        <a href="/profile" className="text-emerald-700 hover:underline">
+          ← Back to Profile
+        </a>
+      </div>
     </div>
   );
 }

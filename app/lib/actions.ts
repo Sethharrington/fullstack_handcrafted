@@ -372,7 +372,7 @@ export async function deleteCategory(id: string) {
 }
 export async function deleteProduct(id: string) {
   await sql`
-    DELETE FROM product WHERE id = ${id}
+    DELETE FROM "product" WHERE id = ${id}
   `;
   revalidatePath("/profile/manageProducts");
 }

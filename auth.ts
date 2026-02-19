@@ -10,7 +10,9 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
-    const user = await sql<User[]>`SELECT * FROM user WHERE email=${email}`;
+    const user = await sql<
+      User[]
+    >`SELECT * FROM "user" WHERE email=${email} OR username=${email}`;
     return user[0];
   } catch (error) {
     console.error("Failed to fetch user:", error);
@@ -24,7 +26,7 @@ export const { auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         const parsedCredentials = z
           .object({
-            email: z.string().email(),
+            email: z.string().min(1), // Changed to accept username or email
             password: z.string().min(6).max(32),
           })
           .safeParse(credentials);
