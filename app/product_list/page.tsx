@@ -22,7 +22,7 @@ export default async function ProductListPage(props: {
 
   return (
     <div className="flex flex-col items-center justify-center py-10 px-[10vw]">
-      <h1 className="my-5">Product List</h1>
+      <h1 className="my-5 text-2xl font-bold text-gray-800 text-center">Product List</h1>
       <ProductListFilter categories={categoryList} artisans={artisanList} />
       <ProductListGrid
         artisan={artisan}
