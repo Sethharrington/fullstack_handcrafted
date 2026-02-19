@@ -94,18 +94,36 @@ VALUES (
 -- ============================================
 -- TABLE: products
 -- ============================================
+INSERT INTO "public"."product" (
+        "id",
+        "name",
+        "artisan_id",
+        "price",
+        "created_at",
+        "category_id",
+        "description"
+    )
+VALUES (
+        '81751607-7358-43b7-8ebf-098777c170fd',
+        'Handthrown Coffee Mug',
+        '8512d765-f522-4613-a72b-aa94ecb9a17b',
+        '2',
+        '2026-02-15 05:19:38.116933+00',
+        '296792cf-29a0-4535-a321-2c137e525d9b',
+        'Great Product'
+    );
 INSERT INTO product (name, price, artisan_id, category_id)
 VALUES -- Pottery products
     (
         'Handthrown Coffee Mug',
         28.99,
-        '851c2f6b-f322-4e11-a72b-aa94ecb9a17b',
+        '8512d765-f522-4613-a72b-aa94ecb9a17b',
         '296792cf-29a0-4535-a321-2c137e525d9b'
     ),
     (
         'Large Serving Bowl',
         65.50,
-        '851c2f6b-f322-4e11-a72b-aa94ecb9a17b',
+        '8512d765-f522-4613-a72b-aa94ecb9a17b',
         '296792cf-29a0-4535-a321-2c137e525d9b'
     ),
     (

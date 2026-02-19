@@ -178,3 +178,19 @@ export async function getUserById(id: string) {
     throw error;
   }
 }
+
+export async function getProductsByArtisanId(artisanId: string) {
+  try {
+    const productList = await sql<ProductCard[]>`
+    SELECT p.id as id, p.name as name, p.description as description, price, category_id, artisan_id, a.name as artisan_name, c.name as category_name
+    FROM "product" as p
+    JOIN "artisan" as a ON p.artisan_id = a.id
+    JOIN "category" as c ON p.category_id = c.id
+    WHERE p.artisan_id = ${artisanId}
+    ORDER BY p.name`;
+    return productList;
+  } catch (error) {
+    console.error("Error fetching products for artisan:", error);
+    throw error;
+  }
+}
