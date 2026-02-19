@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { Product, Artisan, Category } from "@/app/lib/definitions";
+import { ProductCard } from "@/app/lib/definitions";
 interface ProductListGridProps {
   artisan: string;
   category: string;
   pricerange: string;
-  products: Product[];
+  products: ProductCard[];
 }
 
 export default function ProductListGrid({
