@@ -1,5 +1,12 @@
+"use client";
+
 import { createUser } from "../lib/actions";
+import { useActionState } from "react";
+import { UserState } from "../lib/states";
 export default function RegisterForm() {
+  const initialState: UserState = { message: null, errors: {} };
+  const [state, formAction] = useActionState(createUser, initialState);
+
   return (
     <section className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
       <h1 className="text-2xl font-bold text-gray-800 text-center">
@@ -10,8 +17,8 @@ export default function RegisterForm() {
         Create an account to start selling your handcrafted items
       </p>
 
-      <form action={createUser} className="mt-6 space-y-4">
-        {/* Name */}
+      <form action={formAction} className="mt-6 space-y-4">
+        {/* First Name */}
         <div>
           <label
             htmlFor="firstname"
@@ -25,8 +32,16 @@ export default function RegisterForm() {
             required
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
+          <div id="firstname-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.firstname &&
+              state.errors.firstname.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>{" "}
         </div>
-        {/* Name */}
+        {/* Last Name */}
         <div>
           <label
             htmlFor="lastname"
@@ -40,8 +55,16 @@ export default function RegisterForm() {
             required
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
+          <div id="lastname-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.lastname &&
+              state.errors.lastname.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
-        {/* Name */}
+        {/* Username */}
         <div>
           <label
             htmlFor="username"
@@ -55,6 +78,14 @@ export default function RegisterForm() {
             required
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
+          <div id="username-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.username &&
+              state.errors.username.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
 
         {/* Email */}
@@ -72,6 +103,14 @@ export default function RegisterForm() {
             required
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
+          <div id="email-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.email &&
+              state.errors.email.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
 
         {/* Password */}
@@ -90,6 +129,14 @@ export default function RegisterForm() {
             required
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
+          <div id="password-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.password &&
+              state.errors.password.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
 
         {/* Description */}
@@ -117,9 +164,16 @@ export default function RegisterForm() {
           <input
             id="artisan_id"
             name="artisan_id"
-            required
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
+          <div id="artisan_id-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.artisan_id &&
+              state.errors.artisan_id.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
 
         {/* Error */}
@@ -131,7 +185,7 @@ export default function RegisterForm() {
           // disabled={loading}
           className="w-full bg-emerald-700 text-white py-2 rounded-md font-medium hover:bg-emerald-800 transition disabled:opacity-50"
         >
-          {/* {loading ? "Creating account..." : "Register"} */}
+          Register {/* {loading ? "Creating account..." : "Register"} */}
         </button>
       </form>
 

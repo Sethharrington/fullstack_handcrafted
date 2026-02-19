@@ -1,5 +1,6 @@
 "use server";
 import { signIn } from "@/auth";
+import bcrypt from "bcrypt";
 
 import {
   ArtisanSchema,
@@ -172,10 +173,14 @@ export async function createUser(prevState: UserState, formData: FormData) {
   }
   const { firstname, lastname, email, username, password, artisan_id } =
     validatedFields.data;
+  
+  // Hash the password before storing
+  const hashedPassword = await bcrypt.hash(password, 10);
+  
   try {
     await sql`
     INSERT INTO "user" (firstname, lastname, email, username, password, artisan_id)
-    VALUES (${firstname}, ${lastname}, ${email}, ${username}, ${password}, ${artisan_id ?? null})
+    VALUES (${firstname}, ${lastname}, ${email}, ${username}, ${hashedPassword}, ${artisan_id ?? null})
   `;
   } catch (error) {
     console.error("Error creating user:", error);

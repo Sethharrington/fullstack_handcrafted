@@ -3,43 +3,55 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { useActionState } from "react";
+import { authenticate } from "@/app/lib/actions";
+import { useSearchParams } from "next/navigation";
+import { Button } from "@/app/components/button";
+
 export default function LoginForm() {
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
+  const [error, formAction, isPending] = useActionState(
+    authenticate,
+    undefined,
+  );
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const router = useRouter();
 
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  // const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
 
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  // async function handleSubmit(e: React.FormEvent) {
+  //   e.preventDefault();
+  //   setError("");
+  //   setLoading(true);
 
-      const data = await res.json();
+  //   try {
+  //     const res = await fetch("/api/auth/login", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email, password }),
+  //     });
 
-      if (!res.ok) {
-        throw new Error(data.error || "Invalid login credentials");
-      }
+  //     const data = await res.json();
 
-      // set simple auth cookie
-      document.cookie = "auth=true; path=/";
+  //     if (!res.ok) {
+  //       throw new Error(data.error || "Invalid login credentials");
+  //     }
 
-      router.push("/profile");
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  //     // set simple auth cookie
+  //     document.cookie = "auth=true; path=/";
+
+  //     router.push("/profile");
+  //   } catch (err: any) {
+  //     setError(err.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   return (
     <section className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
@@ -51,47 +63,47 @@ export default function LoginForm() {
         Sign in to manage your handcrafted products
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+      <form action={formAction} className="mt-6 space-y-4">
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
             Email
           </label>
           <input
             id="email"
             type="email"
             required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
 
         {/* Password */}
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700"
+          >
             Password
           </label>
           <input
             id="password"
             type="password"
             required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
         </div>
 
-        {error && (
-          <p className="text-sm text-red-600">{error}</p>
-        )}
+        {error && <p className="text-sm text-red-600">{error}</p>}
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={isPending}
           className="w-full bg-emerald-700 text-white py-2 rounded-md font-medium hover:bg-emerald-800 transition disabled:opacity-50"
         >
-          {loading ? "Signing in..." : "Login"}
+          {isPending ? "Signing in..." : "Login"}
         </button>
       </form>
 
