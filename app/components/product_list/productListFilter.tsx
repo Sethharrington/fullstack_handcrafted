@@ -56,7 +56,7 @@ export default function ProductListFilter({
           </option>
         ))}
       </select>
-      <select
+      {/* <select
         defaultValue={searchParams.get("pricerange") || ""}
         onChange={(e) => handleSelection("pricerange", e.target.value)}
         name="pricerange"
@@ -69,7 +69,8 @@ export default function ProductListFilter({
         <option value="10-15">$10.00-$15.00</option>
         <option value="15-20">$15.00-$20.00</option>
         <option value="20-25">$20.00-$25.00</option>
-      </select>
+      </select> */}
+      <input></input>
     </div>
   );
 }
