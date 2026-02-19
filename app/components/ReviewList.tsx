@@ -25,7 +25,7 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
         <div key={index} className="border-b border-gray-300 py-3">
           {review.email} |{" "}
           {new Date(review.created_at).toISOString().split("T")[0]}
-          <div className="font-bold mb-1">{renderStars(review.rating)}</div>
+          <div className="font-bold mb-1">{renderStars(review.rating as Rating)}</div>
           <div className="text-gray-500">{review.description}</div>
         </div>
       ))}

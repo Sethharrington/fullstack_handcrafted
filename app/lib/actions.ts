@@ -55,7 +55,6 @@ export async function createArtisan(
 }
 
 export async function createCategory(
-  prevState: CategoryState,
   formData: FormData,
 ) {
   const validatedFields = CategorySchema.safeParse({
@@ -64,10 +63,8 @@ export async function createCategory(
     note: formData.get("note"),
   });
   if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Category.",
-    };
+    console.log("Validation Problem with creating Category.")
+    return;
   }
   const { name, description, note } = validatedFields.data;
   try {
@@ -78,16 +75,13 @@ export async function createCategory(
   `;
   } catch (error) {
     console.error("Error creating category:", error);
-    return {
-      message: "Failed to create category. Please try again.",
-    };
   }
   revalidatePath("/profile/manageCategories");
   redirect("/profile/manageCategories");
 }
 export async function createProduct(
   prevState: ProductState,
-  formData: FormData,
+  formData: FormData
 ) {
   const validatedFields = ProductSchema.safeParse({
     name: formData.get("name"),

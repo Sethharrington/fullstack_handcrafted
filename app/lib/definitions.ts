@@ -28,6 +28,7 @@ export type ProductCard = Product & {
 };
 
 export type Review = {
+  created_at: string | number | Date;
   id?: string;
   email: string;
   rating: number;

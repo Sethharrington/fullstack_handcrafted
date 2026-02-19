@@ -15,7 +15,7 @@ export default function Form({
   const [state, formAction] = useActionState(createProduct, initialState);
   return (
     <form
-      action={formAction}
+      action={formAction as unknown as (formData: FormData) => void}
       className="max-w-md mx-auto p-6 border rounded mt-8"
     >
       <h1 className="text-2xl font-bold text-gray-800 text-center">

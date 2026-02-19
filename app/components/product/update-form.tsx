@@ -14,7 +14,8 @@ export default function Form({
   categoryList: Category[];
 }) {
   const initialState: ProductState = { message: null, errors: {} };
-  const [state, formAction] = useActionState(updateProduct, initialState);
+  const updateProductWithId = updateProduct.bind(null, id);
+  const [state, formAction] = useActionState(updateProductWithId, initialState);
 
   return (
     <form

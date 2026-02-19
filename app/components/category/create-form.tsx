@@ -1,9 +1,9 @@
-import { createProduct } from "@/app/lib/actions";
+import { createCategory } from "@/app/lib/actions";
 
 export default function Form() {
   return (
     <form
-      action={createProduct}
+      action={createCategory}
       className="max-w-md mx-auto p-6 border rounded mt-8"
     >
       <h1 className="text-2xl font-bold text-gray-800 text-center">
