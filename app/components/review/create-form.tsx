@@ -1,90 +1,57 @@
-import { createProduct } from "@/app/lib/actions";
-import { Artisan, Category } from "@/app/lib/definitions";
-
-export default function Form({
-  artisanList,
-  categoryList,
-}: {
-  artisanList: Artisan[];
-  categoryList: Category[];
-}) {
+import { createReview } from "@/app/lib/actions";
+import { useActionState } from "react";
+import { ReviewState } from "@/app/lib/states";
+export default function Form({ product_id }: { product_id: string }) {
+  const initialState: ReviewState = { message: null, errors: {} };
+  const [state, formAction] = useActionState(createReview, initialState);
   return (
     <form
-      action={createProduct}
+      action={formAction}
       className="max-w-md mx-auto p-6 border rounded mt-8"
     >
       <h1 className="text-2xl font-bold text-gray-800 text-center">
         Add Review
       </h1>
-
+      <label htmlFor="email" className="block text-sm font-medium mb-1">
+        Email{" "}
+      </label>
       <input
+        id="email"
         className="w-full p-2 mb-2 border rounded"
-        placeholder="Product Title"
-        name="name"
+        placeholder="Email"
+        name="email"
       />
-      <textarea
+
+      <label htmlFor="rating" className="block text-sm font-medium mb-1">
+        Rating{" "}
+      </label>
+      <input
+        id="rating"
         className="w-full p-2 mb-2 border rounded"
-        placeholder="Product Description"
+        placeholder="Rating"
+        name="rating"
+      />
+      <label htmlFor="description" className="block text-sm font-medium mb-1">
+        Review
+      </label>
+      <textarea
+        id="description"
+        className="w-full p-2 mb-2 border rounded"
+        placeholder="Text..."
         name="description"
       />
-      <div className="mb-4">
-        <label htmlFor="customer" className="mb-2 block text-sm font-medium">
-          Choose artisan
-        </label>
-        <div className="relative">
-          <select
-            id="artisan"
-            name="artisan_id"
-            className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select an artisan
-            </option>
-            {artisanList.map((artisan) => (
-              <option key={artisan.id} value={artisan.id}>
-                {artisan.name}
-              </option>
-            ))}
-          </select>
-          {/* <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" /> */}
-        </div>
-      </div>
-      <div className="mb-4">
-        <label htmlFor="category" className="mb-2 block text-sm font-medium">
-          Choose category
-        </label>
-        <div className="relative">
-          <select
-            id="category"
-            name="category_id"
-            className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select a category
-            </option>
-            {categoryList.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-          {/* <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" /> */}
-        </div>
-      </div>
       <input
-        className="w-full p-2 mb-2 border rounded"
-        placeholder="Price"
-        type="number"
-        name="price"
+        type="text"
+        name="product_id"
+        id="product_id"
+        defaultValue={product_id}
+        hidden
       />
-
       <button
         type="submit"
         className="w-full bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700"
       >
-        Add Product
+        Add Review
       </button>
     </form>
   );

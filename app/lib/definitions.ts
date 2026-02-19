@@ -34,6 +34,9 @@ export type Review = {
   description: string;
   product_id: string;
 };
+export type ReviewList = Review & {
+  created_at: Date;
+};
 export type User = {
   id?: string;
   firstname: string;
