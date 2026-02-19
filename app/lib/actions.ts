@@ -31,7 +31,6 @@ const sql = postgres(process.env.POSTGRES_URL!, {
 //                     CREATE RECORDS                   //
 //////////////////////////////////////////////////////////
 export async function createArtisan(
-  prevState: ArtisanState,
   formData: FormData,
 ) {
   const validatedFields = ArtisanSchema.safeParse({
@@ -39,10 +38,8 @@ export async function createArtisan(
     description: formData.get("description"),
   });
   if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Artisan.",
-    };
+    console.log("Missing Fields. Failed to Create Artisan.");
+    return;
   }
   const { name, description } = validatedFields.data;
   try {
@@ -52,9 +49,6 @@ export async function createArtisan(
   `;
   } catch (error) {
     console.error("Error creating artisan:", error);
-    return {
-      message: "Failed to create artisan. Please try again.",
-    };
   }
   revalidatePath("/profile/manageArtisans");
   redirect("/profile/manageArtisans");
@@ -79,7 +73,7 @@ export async function createCategory(
   try {
     await sql`
     INSERT INTO categories (name, description, note)
-    VALUES (${name}, ${description}, ${note})
+    VALUES (${name}, ${description ?? null}, ${note ?? null})
     RETURNING *
   `;
   } catch (error) {
@@ -247,7 +241,7 @@ export async function updateCategory(
   try {
     await sql`
     UPDATE categories
-    SET name = ${name}, description = ${description}, note = ${note}
+    SET name = ${name}, description = ${description ?? null}, note = ${note ?? null}
     WHERE id = ${id}
   `;
   } catch (error) {
@@ -260,6 +254,7 @@ export async function updateCategory(
   redirect("/profile/manageCategories");
 }
 export async function updateProduct(
+  id: string,
   prevState: ProductState,
   formData: FormData,
 ) {
