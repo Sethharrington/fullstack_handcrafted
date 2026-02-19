@@ -1,10 +1,10 @@
 import ProductListFilter from "../components/product_list/productListFilter";
 import ProductListGrid from "../components/product_list/productListGrid";
 
-import { getArtisan, getCategory, getProductCard } from "@/app/lib/data";
+import { getArtisan, getArtisanFromProducts, getCategory, getCategoryFromProducts, getProductCard } from "@/app/lib/data";
 // Remove after DB is made
-const categoryList = await getCategory();
-const artisanList = await getArtisan();
+const categoryList = await getCategoryFromProducts();
+const artisanList = await getArtisanFromProducts();
 const productList = await getProductCard();
 // End of what needs to be removed
 

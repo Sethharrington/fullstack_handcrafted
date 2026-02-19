@@ -23,9 +23,29 @@ export async function getArtisan() {
   }
 }
 
+export async function getArtisanFromProducts() {
+  try {
+    const artisanList = await sql<Artisan[]>`SELECT DISTINCT * FROM "artisan" WHERE id IN (SELECT DISTINCT artisan_id FROM "product")`;
+    return artisanList;
+  } catch (error) {
+    console.error("Error fetching artisans:", error);
+    throw error;
+  }
+}
+
 export async function getCategory() {
   try {
     const categoryList = await sql<Category[]>`SELECT * FROM "category"`;
+    return categoryList;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    throw error;
+  }
+}
+
+export async function getCategoryFromProducts() {
+  try {
+    const categoryList = await sql<Category[]>`SELECT DISTINCT * FROM "category" WHERE id IN (SELECT DISTINCT category_id FROM "product")`;
     return categoryList;
   } catch (error) {
     console.error("Error fetching categories:", error);

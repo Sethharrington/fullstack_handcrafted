@@ -32,12 +32,14 @@ export async function POST(req: Request) {
       { message: "User registered successfully" },
       { status: 201 }
     );
-  } catch (error: any) {
-    if (error.code === 11000) {
-      return NextResponse.json(
-        { error: "Email already exists" },
-        { status: 400 }
-      );
+  } catch (error: unknown) {
+    if (error && typeof error === 'object' && 'code' in error) {
+      if (error.code === 11000) {
+        return NextResponse.json(
+          { error: "Email already exists" },
+          { status: 400 }
+        );
+      }
     }
 
     return NextResponse.json(
