@@ -18,7 +18,9 @@ export default function Form({
       action={formAction}
       className="max-w-md mx-auto p-6 border rounded mt-8"
     >
-      <h1 className="text-2xl font-bold mb-4">Add Product</h1>
+      <h1 className="text-2xl font-bold text-gray-800 text-center">
+        Add Product
+      </h1>
 
       <label htmlFor="name" className="block text-sm font-medium mb-1">
         Product Title

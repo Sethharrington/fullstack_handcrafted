@@ -50,14 +50,20 @@ export default function MyProductsPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">My Products</h1>
+      <h1 className="text-2xl font-bold text-gray-800 text-center">
+        My Products
+      </h1>
 
       {products.map((product) => (
-          <div key={product._id} onClick={() => router.push(`/products/${product._id.toString()}`)} className="border p-4 mb-4 rounded cursor-pointer hover:shadow">
-            <h2 className="text-xl font-bold">{product.title}</h2>
-            <p>{product.description}</p>
-            <p className="font-semibold">${product.price}</p>
-            <div className="mt-2 space-x-2">
+        <div
+          key={product._id}
+          onClick={() => router.push(`/products/${product._id.toString()}`)}
+          className="border p-4 mb-4 rounded cursor-pointer hover:shadow"
+        >
+          <h2 className="text-xl font-bold">{product.title}</h2>
+          <p>{product.description}</p>
+          <p className="font-semibold">${product.price}</p>
+          <div className="mt-2 space-x-2">
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -76,8 +82,8 @@ export default function MyProductsPage() {
             >
               Delete
             </button>
-            </div>
           </div>
+        </div>
       ))}
 
       {editingProduct && (
@@ -87,14 +93,19 @@ export default function MyProductsPage() {
             <input
               className="w-full p-2 mb-2 border rounded"
               value={editingProduct.title}
-              onChange={(e) => setEditingProduct({ ...editingProduct, title: e.target.value })}
+              onChange={(e) =>
+                setEditingProduct({ ...editingProduct, title: e.target.value })
+              }
               placeholder="Title"
             />
             <textarea
               className="w-full p-2 mb-2 border rounded"
               value={editingProduct.description}
               onChange={(e) =>
-                setEditingProduct({ ...editingProduct, description: e.target.value })
+                setEditingProduct({
+                  ...editingProduct,
+                  description: e.target.value,
+                })
               }
               placeholder="Description"
             />
@@ -103,7 +114,10 @@ export default function MyProductsPage() {
               type="number"
               value={editingProduct.price}
               onChange={(e) =>
-                setEditingProduct({ ...editingProduct, price: Number(e.target.value) })
+                setEditingProduct({
+                  ...editingProduct,
+                  price: Number(e.target.value),
+                })
               }
               placeholder="Price"
             />

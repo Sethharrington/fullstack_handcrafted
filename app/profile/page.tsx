@@ -33,7 +33,9 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold">Welcome, {user.name}</h1>
+      <h1 className="text-2xl font-bold text-gray-800 text-center">
+        Welcome, {user.name}
+      </h1>
 
       {/* Description */}
       <div className="mt-6">
@@ -43,21 +45,24 @@ export default function ProfilePage() {
 
       {/* Navigation */}
       <div className="mt-8 space-x-4">
-        <a href="/profile/manageProducts" className="text-emerald-700 underline">
+        <a
+          href="/profile/manageProducts"
+          className="text-emerald-700 underline"
+        >
           My Products
         </a>
         <a href="/profile/addProduct" className="text-emerald-700 underline">
           Add Product
         </a>
         <button
-        onClick={async () => {
+          onClick={async () => {
             await fetch("/api/auth/logout", { method: "POST" });
             router.replace("/login");
             router.refresh();
-        }}
-        className="text-sm text-red-600 hover:underline"
+          }}
+          className="text-sm text-red-600 hover:underline"
         >
-        Sign out
+          Sign out
         </button>
       </div>
     </div>

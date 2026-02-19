@@ -38,24 +38,32 @@ export default function SlideShow() {
     };
 
     return (
-        <div className="flex items-center justify-center gap-4 w-full max-w-2xl">
-            <SlideShowButton onClick={ () => {handleClick(false)} }>
-                &lt;
-            </SlideShowButton>
-            <div>
-                <Image
-                    key={currentImageIndex}
-                    // This is here to reset the animation each time the button is clicked
-                    src={imagePathList[currentImageIndex]}
-                    alt={imageAltList[currentImageIndex]} 
-                    width={600} 
-                    height={400}
-                    className="animate-slideIn border-2 border-gray-800"
-                />
-            </div>
-            <SlideShowButton onClick={ () => {handleClick(true)} }>
-                &gt;
-            </SlideShowButton>
+      <div className="flex items-center justify-center gap-4 w-full max-w-2xl">
+        <SlideShowButton
+          onClick={() => {
+            handleClick(false);
+          }}
+        >
+          &lt;
+        </SlideShowButton>
+        <div>
+          <Image
+            key={currentImageIndex}
+            // This is here to reset the animation each time the button is clicked
+            src={imagePathList[currentImageIndex]}
+            alt={imageAltList[currentImageIndex]}
+            width={600}
+            height={400}
+            className="animate-slideIn rounded-lg shadow-xl mt-4"
+          />
         </div>
+        <SlideShowButton
+          onClick={() => {
+            handleClick(true);
+          }}
+        >
+          &gt;
+        </SlideShowButton>
+      </div>
     );
 }
